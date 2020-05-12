@@ -39,7 +39,7 @@ public class MainGui extends JFrame implements ActionListener{
 			new GetInfoGui("감염 위험도 측정");
 		}
 		else if(e.getSource().equals(bt2)) {
-			new GetInfoGui("코로나 정보 제공");
+			System.out.println("아직 미구현\n");
 			
 		}
 	}
