@@ -14,6 +14,8 @@ import javax.swing.SwingUtilities;
 
 public class GetInfo_one extends JPanel implements ActionListener{
 	
+	JFrame frame = new Frame();
+	
 	JPanel getinfoPanel = new JPanel();
 	DBdata db = new DBdata();
 	String[] district = null;
@@ -37,6 +39,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 	
 	//생성자   
 	public GetInfo_one(JFrame frame) {
+		this.frame = frame;
 		
 		//setting panel
 		getinfoPanel.setLayout(null);
@@ -91,11 +94,14 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		
 		//if next button clicked, calculate score. 
 		if(e.getSource().equals(nextBtn)) {
+			//calculate score
 			int selected1 = district1_ch.getSelectedIndex();
 			int selected2 = district2_ch.getSelectedIndex();
 			calculateScore(selected1,selected2);
 			
-			System.out.println(MainPanel.s); //just for checking if the score is calculated correctly.
+			//go next panel
+			//getinfoPanel.setVisible(false);
+			//new GetInfo_one(frame);
 		}
 	}
 }
