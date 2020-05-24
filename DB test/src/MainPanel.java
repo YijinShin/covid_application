@@ -16,16 +16,16 @@ import java.awt.event.*;
 
 public class MainPanel extends JPanel implements ActionListener{
 	
-	public static int s=10;	
+	public static int s=0;	//this is score variable.if you want to use s in other class, write "MainPanel.s"  
 	
-	JFrame f = new JFrame();
+	JFrame frame = new JFrame();
 	
 	JPanel mainPanel = new JPanel();
 	JButton bt1 = new JButton("위험도 측정");
 	JButton bt2 = new JButton("코로나 정보");
 	
 	public MainPanel(JFrame frame) {
-		f = frame;
+		this.frame = frame;
 		bt1.setBounds(100,200,80,50); //set button size, location
 		bt2.setBounds(300,200,80,50); //set button size, location 
 
@@ -42,12 +42,12 @@ public class MainPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(bt1)) {
 			mainPanel.setVisible(false);
-			new GetInfoPanel(f);
+			new GetInfo_one(frame);
 			//new GetInfoGui("감염 위험도 측정");
 			
 		}
 		else if(e.getSource().equals(bt2)) {
-			System.out.println("아직 미구현\n");
+			System.out.println("It has not been implemented yet.\n");
 			
 		}
 	}

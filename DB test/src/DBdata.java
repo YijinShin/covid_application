@@ -37,6 +37,7 @@ public class DBdata{
 		
 	}
 	
+	//get name from Area
 	public String[] getDistrictFromArea() {
 		ResultSetMetaData rsmd=null;
 		String sql = "SELECT name FROM Area;";
@@ -64,6 +65,35 @@ public class DBdata{
 		return district;
 	}
 	
+	//get confirmedCaseTotal from Area ( CC = ConfirmedCase)
+	public int[] getCCTotalFromArea() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT confirmedCaseTotal FROM Area;";
+		int[] CCTotal = null;
+		int resultCount;
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			CCTotal = new int[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				CCTotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
+				i++;
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+			
+		}
+		return CCTotal;
+	}
+	
+	//get process form InfectionProcess
 	public String[] getProcessFromInfectionProcess() {
 		ResultSetMetaData rsmd=null;
 		String sql = "SELECT process FROM InfectionProcess;";
