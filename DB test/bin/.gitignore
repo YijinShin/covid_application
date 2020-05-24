@@ -1,6 +1,8 @@
 /DBconnect.class
+/DBdata.class
+/GetInfoGui.class
+/GetInfoPanel.class
 /Main.class
 /MainGui.class
-/MeasurementGui.class
-/GetInfoGui.class
-/DBdata.class
+/MainPanel.class
+/panel1.class

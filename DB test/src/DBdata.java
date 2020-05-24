@@ -64,13 +64,31 @@ public class DBdata{
 		return district;
 	}
 	
-	
-	public String inputQuery() {
-		Scanner sc = new Scanner(System.in);
-		String sql;
-		System.out.println("enter qurey here: ");
-		sql =  sc.nextLine();
-		System.out.println("query entered\n");
-		return sql;
+	public String[] getProcessFromInfectionProcess() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT process FROM InfectionProcess;";
+		String[] process = null;
+		int resultCount;
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			process = new String[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				process[i] = rs.getString("process");
+				i++;
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+			
+		}
+		return process;
 	}
+
 }

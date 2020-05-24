@@ -1,11 +1,24 @@
+import java.awt.Color;
 import java.sql.*;
 
+import javax.swing.JFrame;
 
-public class Main{
+
+public class Main extends JFrame{
+	
+
 	public static void main(String[] args) {
 		//DBconnect connect = new DBconnect();
 		
-		new MainGui("Main Gui");
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit button
+		frame.setSize(500,500); //set frame size 
+		frame.getContentPane().setBackground(Color.black); // set background color
+		frame.setVisible(true); //프레임이 보이도록 설정
+		
+		//new panel1(frame);
+		new MainPanel(frame);
+		//new MainGui("Main Gui");
 		
 	}
 }
