@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 
 public class GetInfo_one extends JPanel implements ActionListener{
 	
-	JFrame frame = new Frame();
+	JFrame frame = new JFrame();
 	
 	JPanel getinfoPanel = new JPanel();
 	DBdata db = new DBdata();
@@ -44,7 +44,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		//setting panel
 		getinfoPanel.setLayout(null);
 		getinfoPanel.setBackground(Color.white);
-		getinfoPanel.setSize(new Dimension(500,500));
+		getinfoPanel.setSize(new Dimension(1000,500));
 		
 		//setting labels
 		residence1_lb.setBounds(70,60,250,50);

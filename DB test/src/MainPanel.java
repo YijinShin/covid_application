@@ -47,8 +47,9 @@ public class MainPanel extends JPanel implements ActionListener{
 			
 		}
 		else if(e.getSource().equals(bt2)) {
-			System.out.println("It has not been implemented yet.\n");
-			
+			mainPanel.setVisible(false);
+			frame.setContentPane(new ShowInfo_one(frame));
+	
 		}
 	}
 	
