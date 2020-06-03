@@ -1,7 +1,7 @@
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GetInfoPanel.MyActionListener;
+//import GetInfoPanel.MyActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -16,13 +16,13 @@ import java.awt.event.*;
 
 public class MainPanel extends JPanel implements ActionListener{
 	
-	public static int s=0;	//this is score variable.if you want to use s in other class, write "MainPanel.s"  
+	public static int s = 0;	//this is score variable.if you want to use s in other class, write "MainPanel.s"  
 	
 	JFrame frame = new JFrame();
 	
 	JPanel mainPanel = new JPanel();
 	JButton bt1 = new JButton("위험도 측정");
-	JButton bt2 = new JButton("코로나 정보");
+	JButton bt2 = new JButton("서울시 정보");
 	
 	public MainPanel(JFrame frame) {
 		this.frame = frame;
@@ -43,7 +43,7 @@ public class MainPanel extends JPanel implements ActionListener{
 		if(e.getSource().equals(bt1)) {
 			mainPanel.setVisible(false);
 			new GetInfo_one(frame);
-			//new GetInfoGui("감염 위험도 측정");
+			//new GetInfoGui("媛먯뿼 �쐞�뿕�룄 痢≪젙");
 			
 		}
 		else if(e.getSource().equals(bt2)) {

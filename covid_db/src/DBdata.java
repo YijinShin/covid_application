@@ -5,7 +5,7 @@ public class DBdata{
 	String sql;
 	Statement state = null;
 	
-	//생성자 
+	//������
 	public DBdata() {
 		Connection con = null;
 		
@@ -36,6 +36,91 @@ public class DBdata{
 	
 		
 	}
+	
+	//get countries from country
+	public String[] getCountryFromCountry() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT name FROM Country;";
+		String[] country = null;
+		int resultCount;
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			country = new String[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				country[i] = rs.getString("name");
+				i++;
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+			
+		}
+		return country;
+	}
+	
+	// get CCCtotal (CCC = Country ConfirmedCase)
+	public int[] getCCCTotalFromArea() {
+		ResultSetMetaData rsmd = null;
+		String sql = "SELECT confirmedCaseTotal FROM Country;";
+		int[] CCCTotal = null; // array for CCC
+		int resultCount; //number of row in result
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			CCCTotal = new int[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				CCCTotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
+				i++;
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+			
+		}
+		return CCCTotal;
+	}
+	
+	// get CPtotal (CP = Country Population)
+		public int[] getCPTotalFromArea() {
+			ResultSetMetaData rsmd = null;
+			String sql = "SELECT population FROM Country;";
+			int[] CPtotal = null; // array for CP
+			int resultCount; //number of row in result
+			
+			try {
+				ResultSet rs = state.executeQuery(sql);
+				rs.last();
+				resultCount = rs.getRow();
+				rs.beforeFirst();
+				System.out.println("row:"+resultCount);
+				CPtotal = new int[resultCount];
+				//district = new String[100];
+				int i=0;
+				while(rs.next()) {
+					CPtotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
+					i++;
+				}
+				rs.close();
+				
+			}catch(SQLException e){
+				
+			}
+			return CPtotal;
+		}
+		
 	
 	//get name from Area
 	public String[] getDistrictFromArea() {
