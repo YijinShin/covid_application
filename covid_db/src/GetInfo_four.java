@@ -70,8 +70,8 @@ class GetInfo_four extends JFrame implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(getinfoPanel);
 		//frame.setResizable(false);
-		frame.setSize(500,500);
-		frame.setVisible(true);
+		//frame.setSize(500,500);
+		//frame.setVisible(true);
 	}
 	class MyItemListener implements ItemListener{
 		@Override
