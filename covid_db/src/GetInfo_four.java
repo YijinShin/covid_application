@@ -14,51 +14,67 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class GetInfo_four {
-	JFrame frame = new JFrame();
-	JLabel b;
-	JPanel getinfoPanel = new JPanel();
 
-	static JCheckBox[] c = new JCheckBox[6];
+
+class GetInfo_four extends JFrame implements ActionListener{
+	JFrame frame = new JFrame();
+	JPanel getinfoPanel = new JPanel();
+	 
+	JLabel question;
+	JLabel none;   // can be removed just for checking 
+	static JCheckBox[] symptomlist = new JCheckBox[6];
 	
-	public GetInfo_four(JFrame frame) {
+	JButton next;
+	JButton prev;
+	
+	GetInfo_four(JFrame frame){
+		
 		this.frame = frame;
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(200, 100, 320, 240);  
-		frame.setLayout(new FlowLayout());
-		
-		
-		JLabel label = new JLabel("			Please check applicable boxes for the symptoms\n");
-		
-		frame.add(label);		
-		
-		String[] symptoms= {"Dry Cough", "Fever", "Headaches", "Sore throat", "Fatigue", "Diarrhea"};
-		
-		for(int i=0; i<c.length; i++){
-			c[i] = new JCheckBox(symptoms[i]);
-			c[i].addItemListener(new MyItemListener());
-			frame.add(c[i]);
-		}
-		
-		b = new JLabel("your current score is 0");
-		frame.add(b);
-		
-		JButton Submit = new JButton("Submit");
-		frame.add(Submit);
 		
 		//setting panel
 		getinfoPanel.setLayout(null);
 		getinfoPanel.setBackground(Color.white);
 		getinfoPanel.setSize(new Dimension(1000,500));
 		
+		question = new JLabel("Please check applicable boxes for the symptoms");
+		question.setBounds(50,80,400,20);
+		
+		getinfoPanel.add(question);		
+		
+		String[] symptoms= {"Dry Cough", "Fever", "Headaches", "Sore throat", "Fatigue", "Diarrhea"};
+		
+		int y = 100;
+		
+		for(int i=0; i<symptomlist.length; i++){
+			symptomlist[i] = new JCheckBox(symptoms[i]);
+			symptomlist[i].addItemListener(new MyItemListener());
+			symptomlist[i].setBounds(100,y,350,20);
+			y += 20;
+			getinfoPanel.add(symptomlist[i]);
+		}
+		
+		none = new JLabel("your current score is 0");
+		none.setBounds(100,y+20,300,20);
+		getinfoPanel.add(none);	
+		
+		prev = new JButton("prev");
+		prev.setBounds(50,400,80,20);
+		prev.addActionListener(this);
+		getinfoPanel.add(prev);
+		
+		next = new JButton("next");
+		next.setBounds(400,400,80,30);
+		next.addActionListener(this);
+		getinfoPanel.add(next);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(getinfoPanel);
-		//frame.pack();
+		//frame.setResizable(false);
+		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
-	
 	class MyItemListener implements ItemListener{
-		
+		@Override
 		public void itemStateChanged(ItemEvent e) {
 			int select=1;
 			
@@ -68,14 +84,27 @@ public class GetInfo_four {
 			else {
 				select = -1; // decrement upon no selection
 			}
-			for(int i=0; i<c.length; i++) {
-				if(e.getItem() == c[i]) {
+			for(int i=0; i<symptomlist.length; i++) {
+				if(e.getItem() == symptomlist[i]) {
 					MainPanel.s+= select;
 				}
 			}
 			//JLabel label2 = new JLabel();
-			b.setText("your current score is "+MainPanel.s);
+			none.setText("your current score is "+MainPanel.s);
+		}
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource().equals(next)) {
+			getinfoPanel.setVisible(false);
+			//frame.setVisible(false);
+			new GetResult(frame);
 		}
 	}
 }
+
+
+
+
+
 
