@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.*;
 import java.awt.Choice;
 import javax.swing.JCheckBox;
@@ -23,6 +24,8 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	JButton nextBtn = new JButton("next");
 	DBdata db = new DBdata();
 	
+	Rectangle rect[] = null;
+	
 	int[] confirmedCaseTotal = null;
 	String[] district = null; 
 	int[] size = null; // length of rectangle
@@ -30,18 +33,24 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	
 	public ShowInfo_one(JFrame frame){
 		this.frame = frame;
+		
+		
 		//setting objects
 		title.setBounds(50,50,100,80);
 		nextBtn.setBounds(300,300,100,30);
 		nextBtn.addActionListener(this);
-		
+			
 		//add objects to panel
 		add(nextBtn);
 		add(title);
+		
 	}
 	
 	//draw rectangles
-	public void paintComponent(Graphics g) {
+	@Override
+	protected void paintComponent(Graphics g) {
+		panel.setBackground(Color.white);
+		panel.setPreferredSize(frame.getSize());
 		
 		setGraph();
 		
@@ -77,6 +86,7 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource().equals(nextBtn)) {
+			new Menu(frame);
 			
 		}
 	}

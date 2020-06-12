@@ -26,6 +26,7 @@ public class MainPanel extends JPanel implements ActionListener{
 	
 	public MainPanel(JFrame frame) {
 		this.frame = frame;
+
 		bt1.setBounds(100,200,80,50); //set button size, location
 		bt2.setBounds(300,200,80,50); //set button size, location 
 
@@ -43,12 +44,11 @@ public class MainPanel extends JPanel implements ActionListener{
 		if(e.getSource().equals(bt1)) {
 			mainPanel.setVisible(false);
 			new GetInfo_one(frame);
-			//new GetInfoGui("媛먯뿼 �쐞�뿕�룄 痢≪젙");
 			
 		}
 		else if(e.getSource().equals(bt2)) {
 			mainPanel.setVisible(false);
-			frame.setContentPane(new ShowInfo_one(frame));
+			new Menu(frame);
 	
 		}
 	}
