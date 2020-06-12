@@ -77,11 +77,12 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 		menuBtn.addActionListener(this);
 
 		//add objects to panel
-		draw.add(menuBtn);
-		draw.add(title);	
+		panel = draw;
+		panel.add(menuBtn);
+		panel.add(title);	
 		//panel.add(draw);
 		
-		frame.add(draw);
+		frame.add(panel);
 	
 	}	
 	

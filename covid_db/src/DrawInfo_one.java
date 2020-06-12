@@ -74,4 +74,5 @@ public class DrawInfo_one extends JPanel {
 			}
 		}
 	}
+	
 }
