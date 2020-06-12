@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -15,54 +16,70 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
 public class ShowInfo_one extends JPanel implements ActionListener{
+	
 	
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel title = new JLabel("Number of confirmed case Graphs by district");
-	JButton nextBtn = new JButton("next");
+	JButton menuBtn = new JButton("Menu");
 	DBdata db = new DBdata();
-	
-	Rectangle rect[] = null;
-	
+
+
 	int[] confirmedCaseTotal = null;
 	String[] district = null; 
 	int[] size = null; // length of rectangle
-
 	
-	public ShowInfo_one(JFrame frame){
+	ShowInfo_one(JFrame frame){
+		System.out.println("1");
+		
 		this.frame = frame;
-		
-		
+		panel.setLayout(null);
+						
 		//setting objects
-		title.setBounds(50,50,100,80);
-		nextBtn.setBounds(300,300,100,30);
-		nextBtn.addActionListener(this);
-			
+		title.setBounds(100,100,300,80);
+		menuBtn.setBounds(700,700,100,50);
+		menuBtn.addActionListener(this);
+		
+		new draw(); 
+		
 		//add objects to panel
-		add(nextBtn);
-		add(title);
+		panel.add(menuBtn);
+		panel.add(title);		
 		
-	}
+		frame.add(panel);
 	
-	//draw rectangles
-	@Override
-	protected void paintComponent(Graphics g) {
-		panel.setBackground(Color.white);
-		panel.setPreferredSize(frame.getSize());
-		
-		setGraph();
-		
-		super.paintComponent(g);
-		g.setColor(Color.BLUE);
-		int x=50;
-		System.out.println("here");
-		for(int i=0;i<district.length;i++) {
-			System.out.println("in for"+i);
-			g.fillRect(x, 300, 16, size[i]*10);
-			x+=30;
+	}	
+	
+	class draw extends JPanel{
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			
+			System.out.println("2");
+			
+			setGraph();				
+			
+			super.paintComponent(g);
+			
+			Font font = new Font("Dialog", Font.BOLD, 9);
+			g.setFont(font);
+			
+			int x = 15;
+			for(int i=0;i<district.length;i++) {
+				g.setColor(Color.blue);
+				g.fillRect(x, 300 - (size[i]*10), 30, size[i]*10);			
+				x+=37;
+			}	
+			
+			int set = 15;
+			for(int i = 0; i < district.length; i++){
+				g.setColor(Color.black);
+				g.drawString(district[i],set,320);
+				set += 37;
+			}		
+			// determine longest bar
 		}
+		
 	}
 	
 	
@@ -84,12 +101,10 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		if(e.getSource().equals(nextBtn)) {
+			removeAll();
 			new Menu(frame);
-			
 		}
-	}
-	
+	}	
 }
-

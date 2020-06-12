@@ -49,7 +49,7 @@ public class MainPanel extends JPanel implements ActionListener{
 		else if(e.getSource().equals(bt2)) {
 			mainPanel.setVisible(false);
 			new Menu(frame);
-	
+			//new ShowInfo_one(frame);
 		}
 	}
 	
