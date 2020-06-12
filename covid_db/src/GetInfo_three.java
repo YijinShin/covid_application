@@ -24,7 +24,7 @@ public class GetInfo_three extends JFrame implements ActionListener {
 	 String[] infectionProcess = db.getProcessFromInfectionProcess();
 		
 	 JLabel question;	
-	 JCheckBox q[] = new JCheckBox[20];	 
+	 JCheckBox q[] = new JCheckBox[30];	 
 	 JLabel none;
 	 
 	 CardLayout cd = null;
@@ -59,12 +59,13 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		 
 		 }		
 		 
+		 y+=40;
 		 end = new JButton("Summit");
-		 end.setBounds(100,400,80,30);
+		 end.setBounds(100,y,80,30);
 		 end.addActionListener(this);  	
 		 
 		 next = new JButton("next");
-		 next.setBounds(200,400,80,30);
+		 next.setBounds(200,y,80,30);
 		 next.addActionListener(this);
 		 
 		 getinfoPanel.add(question); 
