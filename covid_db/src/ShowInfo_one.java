@@ -30,28 +30,8 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	String[] district = null; 
 	int[] size = null; // length of rectangle
 	
-	ShowInfo_one(JFrame frame){
-		System.out.println("1");
-		
-		this.frame = frame;
-		panel.setLayout(null);
-						
-		//setting objects
-		title.setBounds(100,100,300,80);
-		menuBtn.setBounds(700,700,100,50);
-		menuBtn.addActionListener(this);
-		
-		new draw(); 
-		
-		//add objects to panel
-		panel.add(menuBtn);
-		panel.add(title);		
-		
-		frame.add(panel);
-	
-	}	
-	
-	class draw extends JPanel{
+/*
+		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			
@@ -78,9 +58,32 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 				set += 37;
 			}		
 			// determine longest bar
+			
 		}
+*/
+	
+	ShowInfo_one(JFrame frame){
 		
-	}
+		this.frame = frame;
+		setLayout(null);
+						
+		System.out.println("1");
+		//setting objects
+		
+		DrawInfo_one draw = new DrawInfo_one();
+		
+		title.setBounds(100,100,300,80);
+		menuBtn.setBounds(700,700,100,50);
+		menuBtn.addActionListener(this);
+
+		//add objects to panel
+		draw.add(menuBtn);
+		draw.add(title);	
+		//panel.add(draw);
+		
+		frame.add(draw);
+	
+	}	
 	
 	
 	//setting length of each district-rectengle
@@ -102,8 +105,9 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub		
-		if(e.getSource().equals(nextBtn)) {
-			removeAll();
+		if(e.getSource().equals(menuBtn)) {
+			System.out.println("clicked");
+			panel.setVisible(false);
 			new Menu(frame);
 		}
 	}	

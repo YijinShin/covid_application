@@ -11,7 +11,7 @@ public class Main extends JFrame{
 		//DBconnect connect = new DBconnect();
 		
 		JFrame frame = new JFrame();
-		frame.setBackground(Color.white);
+		//frame.setBackground(Color.white);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit button
 		frame.setSize(1000,1000); //set frame size 
 		//frame.getContentPane().setBackground(Color.black); // set background color
