@@ -205,5 +205,33 @@ public class DBdata{
 		}
 		return process;
 	}
+	
+	//get infectionProcess confirmedCaseTotal
+		public int[] getInfectionProcessTotal() {
+			ResultSetMetaData rsmd=null;
+			String sql = "SELECT confirmedCaseTotal FROM InfectionProcess;";
+			int[] processTotal = null;
+			int resultCount;
+			
+			try {
+				ResultSet rs = state.executeQuery(sql);
+				rs.last();
+				resultCount = rs.getRow();
+				rs.beforeFirst();
+				System.out.println("row:"+resultCount);
+				processTotal = new int[resultCount];
+				//district = new String[100];
+				int i=0;
+				while(rs.next()) {
+					processTotal[i] = Integer.parseInt(rs.getString("confirmedCaseTotal"));
+					i++;
+				}
+				rs.close();
+				
+			}catch(SQLException e){
+				
+			}
+			return processTotal;
+		}
 
 }

@@ -1,5 +1,6 @@
 /DBconnect.class
 /DBdata.class
+/DrawInfo_one.class
 /GetInfoPanel.class
 /GetInfo_four$MyItemListener.class
 /GetInfo_four.class
@@ -10,8 +11,9 @@
 /GetResult.class
 /Main.class
 /MainPanel.class
-/ShowInfo_one.class
 /Menu.class
-/ShowInfo_one$draw.class
-/ShowInfo_one$rectdraw.class
-/DrawInfo_one.class
+/ShowInfo_one.class
+/DrawInfo_two.class
+/ShowInfo_two.class
+/DrawInfo_three.class
+/ShowInfo_three.class

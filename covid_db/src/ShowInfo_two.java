@@ -1,6 +1,4 @@
-
 import javax.swing.JButton;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -17,21 +15,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class ShowInfo_one extends JPanel implements ActionListener{
-	
-	
+public class ShowInfo_two extends JPanel implements ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	JLabel title = new JLabel("Number of confirmed case Graphs by district");
+	JLabel title = new JLabel("Number of confirmed case Graphs compared to population by district");
 	JButton menuBtn = new JButton("Menu");
 	DBdata db = new DBdata();
 
 
 	int[] confirmedCaseTotal = null;
 	String[] district = null; 
-	int[] size = null; // length of rectangle
+	int[] size = null; // length of rectangle	
 	
-	ShowInfo_one(JFrame frame){
+	ShowInfo_two(JFrame frame){
 		
 		this.frame = frame;
 		setLayout(null);
@@ -39,9 +35,9 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 		System.out.println("1");
 		//setting objects
 		
-		DrawInfo_one draw = new DrawInfo_one();
+		DrawInfo_two draw = new DrawInfo_two();
 		
-		title.setBounds(100,100,300,80);
+		title.setBounds(100,100,400,80);
 		menuBtn.setBounds(700,700,100,50);
 		menuBtn.addActionListener(this);
 
@@ -82,4 +78,3 @@ public class ShowInfo_one extends JPanel implements ActionListener{
 		}
 	}	
 }
-

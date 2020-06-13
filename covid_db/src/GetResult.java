@@ -28,15 +28,13 @@ public class GetResult extends JPanel implements ActionListener{
 		homeBtn.setBounds(100,400,250,50);
 		homeBtn.addActionListener(this);
 		getinfoPanel.add(homeBtn);
-		
-		
+	
 		//add panel to frame
 		frame.add(getinfoPanel);
 	}
 	
 	//this is override function (this function works when you make some event (ex_button click...)
 	public void actionPerformed(ActionEvent e) {
-		
 		//if next button clicked, calculate score. 
 		if(e.getSource().equals(homeBtn)) {
 			//go next panel

@@ -39,6 +39,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 	
 	// ������
 	public GetInfo_one(JFrame frame) {
+		System.out.println("one");
 		this.frame = frame;
 		
 		//setting panel
