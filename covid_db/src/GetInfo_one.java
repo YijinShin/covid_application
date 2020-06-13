@@ -97,12 +97,14 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		if(e.getSource().equals(nextBtn)) {
 			//calculate score
 			int selected1 = district1_ch.getSelectedIndex();
+			MainPanel.userDistrict = district[selected1]; // store user district to find clinic
 			int selected2 = district2_ch.getSelectedIndex();
 			calculateScore(selected1,selected2);
 			System.out.println("herer");
 			//go next panel
 			getinfoPanel.setVisible(false);
 			new GetInfo_two(frame);
+			
 		}
 	}
 }

@@ -17,6 +17,7 @@ import java.awt.event.*;
 public class MainPanel extends JPanel implements ActionListener{
 	
 	public static int s = 0;	//this is score variable.if you want to use s in other class, write "MainPanel.s"  
+	public static String userDistrict = " ";
 	
 	JFrame frame = new JFrame();
 	

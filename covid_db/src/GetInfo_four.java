@@ -95,7 +95,7 @@ class GetInfo_four extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(next)) {
 			getinfoPanel.setVisible(false);
-			new GetResult(frame);
+			new lastpage(frame);
 		}
 	}
 }

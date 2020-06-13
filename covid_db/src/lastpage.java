@@ -7,47 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-/*
 
-// show [ final score / average score / clinic ]
-public class GetResult extends JPanel implements ActionListener{
-	
-	JFrame frame = new JFrame();
-	
-	JPanel getinfoPanel = new JPanel();
-	DBdata db = new DBdata();
-	
-	JButton homeBtn = new JButton("home"); // next button
-
-	
-	// ������
-	public GetResult(JFrame frame) {
-		this.frame = frame;
-		System.out.println("this is last");
-		
-		homeBtn.setBounds(100,400,250,50);
-		homeBtn.addActionListener(this);
-		getinfoPanel.add(homeBtn);
-	
-		//add panel to frame
-		frame.add(getinfoPanel);
-	}
-	
-	//this is override function (this function works when you make some event (ex_button click...)
-	public void actionPerformed(ActionEvent e) {
-		//if next button clicked, calculate score. 
-		if(e.getSource().equals(homeBtn)) {
-			//go next panel
-			getinfoPanel.setVisible(false);
-			new MainPanel(frame);
-		}
-	}
-}
-*/
-
-
-//show [ final score / average score / clinic ]
-public class GetResult extends JPanel implements ActionListener{
+public class lastpage extends JPanel implements ActionListener{
 	
 	JFrame frame = new JFrame();
 	
@@ -58,16 +19,14 @@ public class GetResult extends JPanel implements ActionListener{
 	
 	JLabel line;
 	JLabel score_avg;
+	JLabel clinic;
 	
-	// ������
-	public GetResult(JFrame frame) {
+	public lastpage(JFrame frame) {
 		this.frame = frame;
-		System.out.println("this is the last page");
+		System.out.println("this is the last page test");
 		
 		getinfoPanel.setLayout(null);
-		getinfoPanel.setBackground(Color.white);
-		getinfoPanel.setSize(new Dimension(1000,500));
-		
+	
 		homeBtn.setBounds(50,400,250,50);
 		homeBtn.addActionListener(this);
 		getinfoPanel.add(homeBtn);
@@ -77,23 +36,25 @@ public class GetResult extends JPanel implements ActionListener{
 		
 		getinfoPanel.add(line);		
 		
-		
-		DBdata.InsertScore();
+		db.insertScore();
 		
 		int avgscore = db.getUserInfo();
+		System.out.println("after getuserinfo:"+avgscore);
+		
 		
 		score_avg = new JLabel("Overall average score of App Users is : " + avgscore);
 		score_avg.setBounds(50,120,400,20);
-		
 		getinfoPanel.add(score_avg);
 		
 		
 		int[] clinicID = db.getClinicID();
-		JLabel clinic= new JLabel();
+		clinic= new JLabel("recommended clinic : ");
+		score_avg.setBounds(50,160,400,20);
 		
 		for(int i = 0; i< clinicID.length;i++) {
-		System.out.println("clinicID:"+clinicID[i]);
+			System.out.println("clinicID:"+clinicID[i]);
 		}
+
 		//add panel to frame
 		frame.add(getinfoPanel);
 	}

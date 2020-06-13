@@ -4,10 +4,11 @@ import java.util.Scanner;
 public class DBdata{
 	String sql;
 	Statement state = null;
+	PreparedStatement pstmt = null;
+	Connection con = null;
 	
 	//������
 	public DBdata() {
-		Connection con = null;
 		
 		//connecting
 		try {
@@ -33,8 +34,6 @@ public class DBdata{
 		}catch (SQLException e) { 
 		    	
 		}
-	
-		
 	}
 	
 	//get countries from country
@@ -94,32 +93,32 @@ public class DBdata{
 	}
 	
 	// get CPtotal (CP = Country Population)
-		public int[] getCPTotalFromArea() {
-			ResultSetMetaData rsmd = null;
-			String sql = "SELECT population FROM Country;";
-			int[] CPtotal = null; // array for CP
-			int resultCount; //number of row in result
+	public int[] getCPTotalFromArea() {
+		ResultSetMetaData rsmd = null;
+		String sql = "SELECT population FROM Country;";
+		int[] CPtotal = null; // array for CP
+		int resultCount; //number of row in result
 			
-			try {
-				ResultSet rs = state.executeQuery(sql);
-				rs.last();
-				resultCount = rs.getRow();
-				rs.beforeFirst();
-				System.out.println("row:"+resultCount);
-				CPtotal = new int[resultCount];
-				//district = new String[100];
-				int i=0;
-				while(rs.next()) {
-					CPtotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
-					i++;
-				}
-				rs.close();
-				
-			}catch(SQLException e){
-				
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			CPtotal = new int[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				CPtotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
+				i++;
 			}
-			return CPtotal;
+			rs.close();
+				
+		}catch(SQLException e){
+				
 		}
+		return CPtotal;
+	}
 		
 	
 	//get name from Area
@@ -207,31 +206,106 @@ public class DBdata{
 	}
 	
 	//get infectionProcess confirmedCaseTotal
-		public int[] getInfectionProcessTotal() {
-			ResultSetMetaData rsmd=null;
-			String sql = "SELECT confirmedCaseTotal FROM InfectionProcess;";
-			int[] processTotal = null;
-			int resultCount;
+	public int[] getInfectionProcessTotal() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT confirmedCaseTotal FROM InfectionProcess;";
+		int[] processTotal = null;
+		int resultCount;
 			
-			try {
-				ResultSet rs = state.executeQuery(sql);
-				rs.last();
-				resultCount = rs.getRow();
-				rs.beforeFirst();
-				System.out.println("row:"+resultCount);
-				processTotal = new int[resultCount];
-				//district = new String[100];
-				int i=0;
-				while(rs.next()) {
-					processTotal[i] = Integer.parseInt(rs.getString("confirmedCaseTotal"));
-					i++;
-				}
-				rs.close();
-				
-			}catch(SQLException e){
-				
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			processTotal = new int[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				processTotal[i] = Integer.parseInt(rs.getString("confirmedCaseTotal"));
+				i++;
 			}
-			return processTotal;
+			rs.close();
+			
+		}catch(SQLException e){
+				
 		}
+		return processTotal;
+	}
+	
+	public void insertScore() {
 
+		//ResultSetMetaData rsmd=null;
+		String sql = "insert into AppUser(score) values("+MainPanel.s+");";
+		System.out.println(sql);
+		try {
+			int rs = state.executeUpdate(sql);
+			System.out.println("score inserted");
+			
+		}catch(SQLException e){
+			 System.out.println("오류가 발생했습니다 : "+e.getMessage());
+		}
+	}
+		
+		
+	public int getUserInfo() {
+		
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT score FROM AppUser;";
+		int totalscore = 0;
+		int resultCount = 0;
+		int avgscore = 0;
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("# of user:"+resultCount);
+			int i=0;
+			while(rs.next()) {
+				totalscore += Integer.parseInt(rs.getString("score"));
+				System.out.println("calc total:"+totalscore);
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+				
+		}
+		if(resultCount!=0)
+			avgscore = totalscore/resultCount;
+		else avgscore = totalscore;		
+		
+		return avgscore;
+
+	}
+		
+	
+	public int[] getClinicID() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT clinicID FROM ClinicLocation WHERE district = '" + MainPanel.userDistrict +"';";
+		System.out.println(sql);
+		
+		int[] clinicID = null;
+		int resultCount;
+			
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("# of clinic:"+resultCount);
+			clinicID= new int[resultCount];
+			int i=0;
+			while(rs.next()) {
+				clinicID[i] = Integer.parseInt(rs.getString("clinicID"));
+				i++;
+			}
+			rs.close();
+		}catch(SQLException e){
+			 System.out.println("오류가 발생했습니다 : "+e.getMessage());
+		}
+		return clinicID;
+	}
+		
 }
