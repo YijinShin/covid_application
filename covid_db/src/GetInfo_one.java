@@ -1,4 +1,3 @@
-
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,6 +22,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 	Choice district1_ch = new Choice(); // check list of district
 	Choice district2_ch = new Choice(); // check list of district
 	JButton nextBtn = new JButton("next"); // next button
+	JLabel steps = new JLabel("Step 1/4");
 	JLabel residence1_lb = new JLabel("Choose the district you live in.");
 	JLabel residence2_lb = new JLabel("Choose the district you work in.");
 	
@@ -37,9 +37,8 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		}
 	}
 	
-	// ������
+	// Creator
 	public GetInfo_one(JFrame frame) {
-		System.out.println("one");
 		this.frame = frame;
 		
 		//setting panel
@@ -48,6 +47,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		getinfoPanel.setSize(new Dimension(1000,500));
 		
 		//setting labels
+		steps.setBounds(10, 10, 150, 50);
 		residence1_lb.setBounds(70,60,250,50);
 		residence2_lb.setBounds(70,140,250,50);
 		
@@ -62,6 +62,7 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		district2_ch.setBounds(70,200,120,50);
 		
 		//add all objects to panel
+		getinfoPanel.add(steps);
 		getinfoPanel.add(residence1_lb);
 		getinfoPanel.add(residence2_lb);
 		getinfoPanel.add(district1_ch);
@@ -76,17 +77,22 @@ public class GetInfo_one extends JPanel implements ActionListener{
 	public void calculateScore(int selected1,int selected2) {
 		int[] ConfirmedCaseTotal = null;
 		int num;
+		int score = 0;
 		ConfirmedCaseTotal = db.getCCTotalFromArea(); //get list of confirmedCaseTotal from area
 		
 		//get ConfirmedCaseTotal of selected district
 		num = ConfirmedCaseTotal[selected1];
-		MainPanel.s += num/10;
-		System.out.println("confirmedCaseTotal: "+num);
-		num = ConfirmedCaseTotal[selected2];
-		MainPanel.s += num/10;
-		System.out.println("confirmedCaseTotal: "+num);
+		System.out.println("confirmedCaseTotal about living district: "+num);
+		score += num/10;
 		
-		System.out.println("Score : "+MainPanel.s);
+		num = ConfirmedCaseTotal[selected2];
+		System.out.println("confirmedCaseTotal about working district: "+num);
+		score += num/10;
+
+		MainPanel.s += score;
+
+		System.out.println("Score in step 1 : " + score);
+		System.out.println("Total Score : " + MainPanel.s);
 		
 	}
 	
@@ -97,14 +103,12 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		if(e.getSource().equals(nextBtn)) {
 			//calculate score
 			int selected1 = district1_ch.getSelectedIndex();
-			MainPanel.userDistrict = district[selected1]; // store user district to find clinic
 			int selected2 = district2_ch.getSelectedIndex();
 			calculateScore(selected1,selected2);
 			System.out.println("herer");
 			//go next panel
 			getinfoPanel.setVisible(false);
 			new GetInfo_two(frame);
-			
 		}
 	}
 }

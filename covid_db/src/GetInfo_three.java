@@ -22,14 +22,13 @@ public class GetInfo_three extends JFrame implements ActionListener {
 	 
 	 DBdata db = new DBdata();
 	 String[] infectionProcess = db.getProcessFromInfectionProcess();
-		
+	
+	 JLabel steps = new JLabel("Step 3/4");
 	 JLabel question;	
 	 JCheckBox q[] = new JCheckBox[30];	 
 	 JLabel none;
 	 
 	 CardLayout cd = null;
-	 
-	 JButton end; 
 	 
 	 JButton next;
 	 
@@ -43,7 +42,8 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		 
 		 question = new JLabel("Please check the items below that relate to you.");
 		 question.setBounds(50,80,300,20);
-		 
+		 steps.setBounds(10, 10, 150, 50);
+
 		 none = new JLabel("If none of the following are related to you, please do not check.");
 		 none.setBounds(50,100,400,20);		 
 		 
@@ -59,18 +59,16 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		 
 		 }		
 		 
-		 y+=40;
-		 end = new JButton("Summit");
-		 end.setBounds(100,y,80,30);
-		 end.addActionListener(this);  	
-		 
+		 y += 40;
+
 		 next = new JButton("next");
 		 next.setBounds(200,y,80,30);
 		 next.addActionListener(this);
-		 
+		
+		 getinfoPanel.add(steps);
 		 getinfoPanel.add(question); 
 		 getinfoPanel.add(none); 
-		 getinfoPanel.add(end);
+		 //getinfoPanel.add(end);
 		 getinfoPanel.add(next);
 		 
 		 for(int i = 0; i<infectionProcess.length;i++) {
@@ -87,20 +85,22 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		int amount = 0;				
 		
-		if(e.getSource().equals(end)) {
-		for(int i = 0; i<infectionProcess.length;i++) {
-			if(q[i].isSelected())
-				amount += 1;
-		}
-				
-			JOptionPane.showMessageDialog(this,"Total: "+amount);  
-			MainPanel.s += amount;
-		}
-		
 		if(e.getSource().equals(next)) {
+			
+			for(int i = 0; i < infectionProcess.length ; i++) {
+				if(q[i].isSelected())
+					amount += 1;
+			}
+			
+			MainPanel.s += amount;
+			
 			getinfoPanel.setVisible(false);
 			new GetInfo_four(frame);
 		}
+		
+		System.out.println("Score in step 3 : " + amount);
+		System.out.println("Total Score : " + MainPanel.s);
+		
 	} 
 
 }

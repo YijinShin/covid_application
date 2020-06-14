@@ -18,6 +18,7 @@ public class MainPanel extends JPanel implements ActionListener{
 	
 	public static int s = 0;	//this is score variable.if you want to use s in other class, write "MainPanel.s"  
 	public static String userDistrict = " ";
+	public static int country_counter = 0;
 	
 	JFrame frame = new JFrame();
 	

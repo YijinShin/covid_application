@@ -12,20 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-// 있다면 선택하고 없으면 three 단계로 넘어가도록 한다
-// 즉, 더이상 선택할 나라가 없을 때까지 선택한다.
-// 잘못눌렀을 때를 대비하여 "처음으로" 버튼이 있어야 할 것 같다.
-
-// 다른 국가에 방문했던 적이 있습니까? 네/ 아니요
-// 네 누르면: 방문한 나라를 선택해주세여~ 스크롤로 국가 선택 
-// 선택하신 국가 외에 다른 국가에 방문했던 적이 있습니까? 
-// 아니요 누르면: three로 넘어감
 
 public class GetInfo_two extends JPanel implements ActionListener{
 	
 	JFrame frame = new JFrame();
 	
 	JPanel panel_two = new JPanel();
+	JLabel steps = new JLabel("Step 2/4");
 	JLabel country_lb = new JLabel("Have you been to another country in the last two weeks?");
 	
 	JButton bt1 = new JButton("Yes");
@@ -41,6 +34,7 @@ public class GetInfo_two extends JPanel implements ActionListener{
 		panel_two.setSize(new Dimension(1000,500));
 		
 		//setting labels
+		steps.setBounds(10, 10, 150, 50);
 		country_lb.setBounds(50,50,400,100);
 		
 		//setting buttons		
@@ -50,6 +44,7 @@ public class GetInfo_two extends JPanel implements ActionListener{
 		bt2.addActionListener(this); //set acitonListener to button
 		
 		//add all objects to panel
+		panel_two.add(steps);
 		panel_two.add(country_lb);
 		panel_two.add(bt1);
 		panel_two.add(bt2);

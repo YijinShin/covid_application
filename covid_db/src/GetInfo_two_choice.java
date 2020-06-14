@@ -12,9 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
 public class GetInfo_two_choice extends JPanel implements ActionListener{
-	
+		
 	JFrame frame = new JFrame();
 	
 	JPanel panel_two_choice = new JPanel();
@@ -25,6 +24,8 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 	JButton bt1 = new JButton("Yes");
 	JButton bt2 = new JButton("No"); 
 	
+	JLabel steps = new JLabel("Step 2/4");
+	JLabel counter;
 	JLabel country_lb = new JLabel("Choose the country you visited.");
 	JLabel question_lb = new JLabel("Have you ever visited a country other than the one you selected?");
 
@@ -41,6 +42,8 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 	
 	//creator
 	public GetInfo_two_choice(JFrame frame) {
+		MainPanel.country_counter += 1;
+		counter = new JLabel("("+MainPanel.country_counter+"st country)");
 		this.frame = frame;
 		
 		//setting panel
@@ -49,7 +52,9 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		panel_two_choice.setSize(new Dimension(1000,500));
 		
 		//setting labels
+		steps.setBounds(10, 10, 150, 50);
 		country_lb.setBounds(70,60,200,70);
+		counter.setBounds(70, 80, 100, 50);
 		question_lb.setBounds(70,200,400,70);
 		
 		//setting district_ch
@@ -63,6 +68,8 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		bt2.addActionListener(this); //set acitonListener to button
 				
 		//add all objects to panel
+		panel_two_choice.add(steps);
+		panel_two_choice.add(counter);
 		panel_two_choice.add(country_lb);
 		panel_two_choice.add(question_lb);
 		panel_two_choice.add(bt1);
@@ -75,27 +82,25 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 	}
 	
 	
-	//±× ±¹°¡ °¨¿°ÀÚ/ÀÎ±¸¼ö * 10000 À» ÇÑÈÄ 10¸í´ç 1Á¡À» ºÎ¿©ÇÑ´Ù.
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½Î±ï¿½ï¿½ï¿½ * 10000 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½Ñ´ï¿½.
 	
-	//°¨¿°ÀÚ(CCCTotal)¸¦ °¡Á®¿À´Â ÇÔ¼ö¿Í 
-	//ÀÎ±¸¼ö(CPTotal)¸¦ °¡Á®¿À´Â ÇÔ¼ö¸¦ DB data¿¡ ±¸ÇöÇÏ°í
-	//°¡Á®¿Í¼­ °è»êÀ» ÇÑ °ªÀ» num¿¡ ³Ö´Â´Ù!
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(CCCTotal)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ 
+	//ï¿½Î±ï¿½ï¿½ï¿½(CPTotal)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ DB dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ numï¿½ï¿½ ï¿½Ö´Â´ï¿½!
 	
 	public void calculateScore(int selected) {
 		int[] CCCTotal = null;
-		//int[] CPTotal = null;
+		int[] CPTotal = null;
 
-		int num;
-		CCCTotal = db.getCCCTotalFromArea(); //get list of confirmedCaseTotal from area
-		//CPTotal = db.getCPTotalFromArea(); //get list of confirmedCaseTotal from area
+		CCCTotal = db.getCCCTotalFromArea(); //get list of confirmedCaseTotal from country
+		CPTotal = db.getCPTotalFromArea(); //get list of countryPopulation from country
 		
 		//get ConfirmedCaseTotal of selected district
-		//num = (CCCTotal[selected] / CPTotal[selected]) * 10000;
-		num = CCCTotal[selected];
-		MainPanel.s += num / 10000;
-		System.out.println("confirmedCaseTotal: "+num);
+		float num = (float)CCCTotal[selected] / (float)CPTotal[selected] * 1000;
+		MainPanel.s += (int)num;
 		
-		System.out.println("Score : "+MainPanel.s);
+		System.out.println("Score in step 2 : " + (int)num); //Incidence per 1,000 people
+		System.out.println("Total Score : " + MainPanel.s);
 		
 	}
 	
