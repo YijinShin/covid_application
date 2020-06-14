@@ -307,5 +307,32 @@ public class DBdata{
 		}
 		return clinicID;
 	}
+	
+	public String[] getDistrictFromMonth() {
+		ResultSetMetaData rsmd=null;
+		String sql = "SELECT residence FROM ConfirmedCase WHERE confirmedDate > month(now());";
+		String[] districtAll = null;
+		int resultCount;
+		
+		try {
+			ResultSet rs = state.executeQuery(sql);
+			rs.last();
+			resultCount = rs.getRow();
+			rs.beforeFirst();
+			System.out.println("row:"+resultCount);
+			districtAll = new String[resultCount];
+			//district = new String[100];
+			int i=0;
+			while(rs.next()) {
+				districtAll[i] = rs.getString("residence");
+				i++;
+			}
+			rs.close();
+			
+		}catch(SQLException e){
+			
+		}
+		return districtAll;
+	}	
 		
 }

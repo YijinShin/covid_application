@@ -21,7 +21,7 @@ public class Menu extends JPanel implements ActionListener{
 	JButton info1 = new JButton("info1");
 	JButton info2 = new JButton("info2");
 	JButton info3 = new JButton("info3");
-	JButton info4 = new JButton("info3");
+	JButton info4 = new JButton("info4");
 	JButton home = new JButton("home");
 
 	public Menu(JFrame frame) {
@@ -42,6 +42,7 @@ public class Menu extends JPanel implements ActionListener{
 		info1.addActionListener(this); 
 		info2.addActionListener(this); 
 		info3.addActionListener(this); 
+		info4.addActionListener(this); 
 		home.addActionListener(this);
 	
 		panel.add(info1);
@@ -70,7 +71,7 @@ public class Menu extends JPanel implements ActionListener{
 		}
 		if(e.getSource().equals(info4)) {
 			panel.setVisible(false);
-			new ShowInfo_three(frame);			
+			new ShowInfo_four(frame);			
 		}
 		if(e.getSource().equals(home)) {
 			panel.setVisible(false);
