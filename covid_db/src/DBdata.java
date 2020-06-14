@@ -98,7 +98,7 @@ public class DBdata{
 		String sql = "SELECT population FROM Country;";
 		int[] CPtotal = null; // array for CP
 		int resultCount; //number of row in result
-			
+		
 		try {
 			ResultSet rs = state.executeQuery(sql);
 			rs.last();
@@ -109,16 +109,17 @@ public class DBdata{
 			//district = new String[100];
 			int i=0;
 			while(rs.next()) {
-				CPtotal[i] =  Integer.parseInt(rs.getString("confirmedCaseTotal"));
+				CPtotal[i] =  Integer.parseInt(rs.getString("population"));
 				i++;
 			}
 			rs.close();
-				
+			
 		}catch(SQLException e){
-				
+			
 		}
 		return CPtotal;
 	}
+	
 		
 	
 	//get name from Area
@@ -284,7 +285,6 @@ public class DBdata{
 	public int[] getClinicID() {
 		ResultSetMetaData rsmd=null;
 		String sql = "SELECT clinicID FROM ClinicLocation WHERE district = '" + MainPanel.userDistrict +"';";
-		System.out.println(sql);
 		
 		int[] clinicID = null;
 		int resultCount;
