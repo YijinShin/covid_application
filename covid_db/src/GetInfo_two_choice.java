@@ -59,7 +59,7 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		
 		//setting district_ch
 		setCountry_ch(country_ch);
-		country_ch.setBounds(70,120,120,100);
+		country_ch.setBounds(70,130,120,100);
 
 		//setting next button
 		bt1.setBounds(70,250,70,50); //set button size, location
@@ -82,11 +82,11 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 	}
 	
 	
-	//�� ���� ������/�α��� * 10000 �� ���� 10���� 1���� �ο��Ѵ�.
+	//占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙/占싸깍옙占쏙옙 * 10000 占쏙옙 占쏙옙占쏙옙 10占쏙옙占쏙옙 1占쏙옙占쏙옙 占싸울옙占싼댐옙.
 	
-	//������(CCCTotal)�� �������� �Լ��� 
-	//�α���(CPTotal)�� �������� �Լ��� DB data�� �����ϰ�
-	//�����ͼ� ����� �� ���� num�� �ִ´�!
+	//占쏙옙占쏙옙占쏙옙(CCCTotal)占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쌉쇽옙占쏙옙 
+	//占싸깍옙占쏙옙(CPTotal)占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쌉쇽옙占쏙옙 DB data占쏙옙 占쏙옙占쏙옙占싹곤옙
+	//占쏙옙占쏙옙占싶쇽옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙 num占쏙옙 占쌍는댐옙!
 	
 	public void calculateScore(int selected) {
 		int[] CCCTotal = null;
