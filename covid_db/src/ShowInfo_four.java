@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 public class ShowInfo_four extends JPanel implements ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	JLabel title = new JLabel("Number of confirmed case Graphs by district");
+	JLabel title = new JLabel("Number of confirmed cases in the last month by district");
 	JButton menuBtn = new JButton("Menu");
 	DBdata db = new DBdata();
 

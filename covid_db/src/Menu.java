@@ -18,10 +18,10 @@ public class Menu extends JPanel implements ActionListener{
 	
 	JPanel panel = new JPanel();
 	
-	JButton info1 = new JButton("info1");
-	JButton info2 = new JButton("info2");
-	JButton info3 = new JButton("info3");
-	JButton info4 = new JButton("info4");
+	JButton info1 = new JButton("Number of confirmed case Graphs by district");
+	JButton info2 = new JButton("Number of confirmed case Graphs compared to population by district");
+	JButton info3 = new JButton("Number of confirmed case Graphs compared to populaiton by infection process");
+	JButton info4 = new JButton("Number of confirmed cases in the last month by district");
 	JButton home = new JButton("home");
 
 	public Menu(JFrame frame) {
@@ -33,10 +33,10 @@ public class Menu extends JPanel implements ActionListener{
 		int y=100;
 		int x=100;
 		
-		info1.setBounds(x,y,100,50); 
-		info2.setBounds(x+200,y,100,50); 
-		info3.setBounds(x,y+100,100,50); 
-		info4.setBounds(x+200,y+100,100,50); 
+		info1.setBounds(x,y,550,50); 
+		info2.setBounds(x,y+100,550,50); 
+		info3.setBounds(x,y+200,550,50); 
+		info4.setBounds(x,y+300,550,50); 
 		home.setBounds(700,700,100,50); 
 		
 		info1.addActionListener(this); 
