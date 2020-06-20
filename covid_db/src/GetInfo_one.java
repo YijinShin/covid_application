@@ -58,8 +58,8 @@ public class GetInfo_one extends JPanel implements ActionListener{
 		//setting district_ch
 		setDistrict_ch(district1_ch);
 		setDistrict_ch(district2_ch);
-		district1_ch.setBounds(70,110,120,50);
-		district2_ch.setBounds(70,190,120,50);
+		district1_ch.setBounds(70,100,120,50);
+		district2_ch.setBounds(70,200,120,50);
 		
 		//add all objects to panel
 		getinfoPanel.add(steps);
