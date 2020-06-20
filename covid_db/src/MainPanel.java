@@ -23,14 +23,16 @@ public class MainPanel extends JPanel implements ActionListener{
 	JFrame frame = new JFrame();
 	
 	JPanel mainPanel = new JPanel();
-	JButton bt1 = new JButton("위험도 측정");
-	JButton bt2 = new JButton("서울시 정보");
+	JButton bt1 = new JButton("Check your probability of getting the disease.");
+	JButton bt2 = new JButton("Check information on Corona in Seoul");
 	
 	public MainPanel(JFrame frame) {
 		this.frame = frame;
+		
+		mainPanel.setLayout(null);
 
-		bt1.setBounds(100,200,80,50); //set button size, location
-		bt2.setBounds(300,200,80,50); //set button size, location 
+		bt1.setBounds(70,70,300,80); //set button size, location
+		bt2.setBounds(70,170,300,80); //set button size, location 
 
 		bt1.addActionListener(this); //set acitonListener to button
 		bt2.addActionListener(this); //set acitonListener to button

@@ -105,7 +105,8 @@ public class GetInfo_one extends JPanel implements ActionListener{
 			int selected1 = district1_ch.getSelectedIndex();
 			int selected2 = district2_ch.getSelectedIndex();
 			calculateScore(selected1,selected2);
-			System.out.println("herer");
+			
+			System.out.println(district[selected1]);
 			//go next panel
 			getinfoPanel.setVisible(false);
 			new GetInfo_two(frame);

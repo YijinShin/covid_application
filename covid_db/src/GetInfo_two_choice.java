@@ -55,11 +55,11 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		steps.setBounds(10, 10, 150, 50);
 		country_lb.setBounds(70,60,200,70);
 		counter.setBounds(70, 80, 100, 50);
-		question_lb.setBounds(70,200,400,70);
+		question_lb.setBounds(70,198,400,70);
 		
 		//setting district_ch
 		setCountry_ch(country_ch);
-		country_ch.setBounds(70,150,120,100);
+		country_ch.setBounds(70,120,120,100);
 
 		//setting next button
 		bt1.setBounds(70,250,70,50); //set button size, location

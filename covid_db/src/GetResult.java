@@ -22,6 +22,8 @@ public class GetResult extends JPanel implements ActionListener{
 	JLabel score_avg;
 	JLabel clinic;
 	
+	JLabel clinicList;
+	
 	public GetResult(JFrame frame) {
 		this.frame = frame;
 		System.out.println("this is the last page test");
@@ -49,13 +51,34 @@ public class GetResult extends JPanel implements ActionListener{
 		
 		
 		int[] clinicID = db.getClinicID();
-		clinic= new JLabel("recommended clinic : ");
-		score_avg.setBounds(50,160,400,20);
 		
-		for(int i = 0; i< clinicID.length;i++) {
-			System.out.println("clinicID:"+clinicID[i]);
+		String[] clinicNames = db.getClinicName(clinicID);
+		for(int i = 0; i< clinicNames.length;i++) {
+			System.out.println("clinicNames:"+clinicNames[i]);
+		}
+		
+		StringBuilder result = new StringBuilder();
+		
+		for(int i=0; i<clinicNames.length; i++){
+			result.append(clinicNames[i]+"\n\n");
 		}
 
+		System.out.println(result);
+		clinic = new JLabel("Recommended clinics near your residence: ");
+		clinic.setBounds(50,200,400,20);
+		getinfoPanel.add(clinic);
+		
+		clinicList = new JLabel();
+		clinicList.setBounds(50, 240, 350, 20);
+		
+		clinicList.setText(""+result);
+		getinfoPanel.add(clinicList);
+
+		
+		
+		
+		score_avg.setBounds(50,160,400,20);
+		
 		//add panel to frame
 		frame.add(getinfoPanel);
 	}

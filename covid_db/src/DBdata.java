@@ -334,5 +334,36 @@ public class DBdata{
 		}
 		return districtAll;
 	}	
+	
+	public String[] getClinicName(int[] clinicID) {
+		ResultSetMetaData rsmd=null;
+		//String sql = "SELECT clinicID FROM ClinicLocation WHERE district = '" + MainPanel.userDistrict +"';";
+		
+		String[] clinicNames = null;
+		int resultCount;
+		int j=0;
+		
+		clinicNames= new String[clinicID.length];
+		for(int i = 0; i< clinicID.length;i++) {
+			String sql = "SELECT name FROM Clinic WHERE ID = '" + clinicID[i] +"';";
+			
+			
+			
+			try {
+				ResultSet rs = state.executeQuery(sql);				
+				
+				while(rs.next()) {
+					clinicNames[j] = rs.getString("name");
+					//System.out.println("clinicNames:"+clinicNames[j]);
+					j++;
+				}
+				rs.close();
+			}catch(SQLException e){
+				 System.out.println("오류가 발생했습니다 : "+e.getMessage());
+			}
+		}
+		
+		return clinicNames;
+	}
 		
 }
