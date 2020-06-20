@@ -23,7 +23,7 @@ public class MainPanel extends JPanel implements ActionListener{
 	JFrame frame = new JFrame();
 	
 	JPanel mainPanel = new JPanel();
-	JButton bt1 = new JButton("Check your probability of getting the disease.");
+	JButton bt1 = new JButton("Check your probability of getting coronavirus.");
 	JButton bt2 = new JButton("Check information on Corona in Seoul");
 	
 	public MainPanel(JFrame frame) {

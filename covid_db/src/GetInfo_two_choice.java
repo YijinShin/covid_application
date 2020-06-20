@@ -59,7 +59,7 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		
 		//setting district_ch
 		setCountry_ch(country_ch);
-		country_ch.setBounds(70,120,120,100);
+		country_ch.setBounds(70,130,120,100);
 
 		//setting next button
 		bt1.setBounds(70,250,70,50); //set button size, location
@@ -80,14 +80,7 @@ public class GetInfo_two_choice extends JPanel implements ActionListener{
 		frame.add(panel_two_choice);
 		//frame.repaint();
 	}
-	
-	
-	//�� ���� ������/�α��� * 10000 �� ���� 10���� 1���� �ο��Ѵ�.
-	
-	//������(CCCTotal)�� �������� �Լ��� 
-	//�α���(CPTotal)�� �������� �Լ��� DB data�� �����ϰ�
-	//�����ͼ� ����� �� ���� num�� �ִ´�!
-	
+
 	public void calculateScore(int selected) {
 		int[] CCCTotal = null;
 		int[] CPTotal = null;

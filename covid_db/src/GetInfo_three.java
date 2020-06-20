@@ -41,13 +41,13 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		 getinfoPanel.setSize(new Dimension(1000,500));
 		 
 		 question = new JLabel("Please check the items below that relate to you.");
-		 question.setBounds(50,80,300,20);
+		 question.setBounds(50,40,300,20);
 		 steps.setBounds(10, 10, 150, 50);
 
 		 none = new JLabel("If none of the following are related to you, please do not check.");
-		 none.setBounds(50,100,400,20);		 
+		 none.setBounds(50,60,400,20);		 
 		 
-		 int y = 120;
+		 int y = 85;
 		 
 		 for(int i = 0; i< infectionProcess.length;i++) {
 			 		 
@@ -59,7 +59,7 @@ public class GetInfo_three extends JFrame implements ActionListener {
 		 
 		 }		
 		 
-		 y += 40;
+		 y += 10;
 
 		 next = new JButton("next");
 		 next.setBounds(200,y,80,30);
